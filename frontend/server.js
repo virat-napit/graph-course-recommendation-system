@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const url = new URL(req.url, 'http://localhost:8080');
+  const url = new URL(req.url, 'https://graph-course-recommendation-system-1.onrender.com');
 
   if (req.method === 'GET' && url.pathname === '/api/students') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -54,5 +54,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8080, () => {
-  console.log('Backend running at http://localhost:8080');
+  console.log('Backend running at https://graph-course-recommendation-system-1.onrender.com');
 });
