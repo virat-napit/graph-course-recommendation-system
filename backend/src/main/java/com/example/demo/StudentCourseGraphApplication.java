@@ -9,12 +9,12 @@ public class StudentCourseGraphApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StudentCourseGraphApplication.class, args);
 		  
-		    
+		      
 		
-	}       
+	}           
 	  
 	  
-    
+      
 }
     
               

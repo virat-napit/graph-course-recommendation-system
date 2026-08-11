@@ -8,7 +8,7 @@ import com.example.demo.service.StudentCourseService;
 import org.springframework.http.ResponseEntity;  
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.List; 
 
 @RestController
 @RequestMapping("/api")
@@ -21,7 +21,7 @@ public class ApiController {
         this.service = service;
     }  
   
-    @PostMapping("/seed")
+    @PostMapping("/seed")  
     public ResponseEntity<String> seedDatabase() {
         service.seedInitialData();
         return ResponseEntity.ok("Database seeded successfully with initial Graph nodes and relationships.");
@@ -33,7 +33,7 @@ public class ApiController {
     	
         return ResponseEntity.ok(service.createStudent(student)); 
     }
-
+  
     @GetMapping("/students")
     public ResponseEntity<List<Student>> getAllStudents() {
         return ResponseEntity.ok(service.getAllStudents());  

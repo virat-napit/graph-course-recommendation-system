@@ -32,12 +32,12 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  const url = new URL(req.url, 'https://graph-course-recommendation-system-1.onrender.com');
+  const url = new URL(req.url, import.meta.env.VITE_API_URL);
 
   if (req.method === 'GET' && url.pathname === '/api/students') {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(students));
-    return;
+    return;  
   }
 
   const recMatch = url.pathname.match(/^\/api\/recommendations\/(\d+)$/);
@@ -53,7 +53,7 @@ const server = http.createServer((req, res) => {
   res.end(JSON.stringify({ message: 'Not found' }));
 });
 
-server.listen(8080, () => {
-  console.log('Backend running at https://graph-course-recommendation-system-1.onrender.com');
+server.listen(process.env.PORT || 8080, () => {
+  console.log('Backend running on port ' + (process.env.PORT || 8080));
 });
- 
+   
