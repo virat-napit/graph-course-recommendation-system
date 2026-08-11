@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:5175") // add fronted url 
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:5175", "https://graph-course-recommendation-system.vercel.app", "https://graph-course-recommendation-system-1.vercel.app", "https://graph-course-recommendation-system-1.onrender.com", "*"})
 public class ApiController {    
 
     private final StudentCourseService service;
@@ -32,6 +32,11 @@ public class ApiController {
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
     	
         return ResponseEntity.ok(service.createStudent(student)); 
+    }
+
+    @GetMapping("/students/{studentId}")
+    public ResponseEntity<Student> getStudentById(@PathVariable String studentId) {
+        return ResponseEntity.ok(service.getStudentById(studentId));
     }
   
     @GetMapping("/students")

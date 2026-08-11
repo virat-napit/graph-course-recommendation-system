@@ -44,6 +44,17 @@ public class GraphRepository {
         }
     }
 
+    public Student findStudentById(String studentId) {
+        String cypher = "MATCH (s:Student {id: $studentId}) RETURN s.id AS id, s.name AS name, s.email AS email";
+        try (Session session = driver.session()) {
+            var result = session.run(cypher, Values.parameters("studentId", studentId)).singleOrNull();
+            if (result == null) {
+                return null;
+            }
+            return new Student(result.get("id").asString(), result.get("name").asString(), result.get("email").asString());
+        }
+    }
+
     // Save Course Node
     public Course saveCourse(Course course) {
         String cypher = "MERGE (c:Course {id: $id}) " +

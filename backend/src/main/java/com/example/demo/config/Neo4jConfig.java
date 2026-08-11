@@ -11,19 +11,20 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Neo4jConfig {
 
-	@Value("${cogndb.uri}")  
+    @Value("${spring.neo4j.uri}")
     private String uri;
-    
-    @Value("${cogndb.username}")
+
+    @Value("${spring.neo4j.authentication.username}")
     private String username;
 
-    @Value("${cogndb.password}")
-    private String password;  
+    @Value("${spring.neo4j.authentication.password}")
+    private String password;
 
-    @Bean  
+    @Bean
     public Driver neo4jDriver() {
         return GraphDatabase.driver(uri, AuthTokens.basic(username, password));
     }
-}           
+}
+
 
 

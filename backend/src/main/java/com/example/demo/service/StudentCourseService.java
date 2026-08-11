@@ -41,6 +41,10 @@ public class StudentCourseService {
     public List<RecommendationDTO> getRecommendations(String studentId) {
         return graphRepository.getRecommendationsForStudent(studentId);
     }
+
+    public Student getStudentById(String studentId) {
+        return graphRepository.findStudentById(studentId);
+    }
       
     
     public void seedInitialData() {
